@@ -28,7 +28,7 @@ mongoose.connect(
         name: "Arendelle",
     });
     const myCollection = new Collection ({
-        name: 'My Collection',
+        name: 'My Legos',
         sets: [],
     });
     myCollection.sets.push(frozen);

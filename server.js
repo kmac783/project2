@@ -40,6 +40,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 // Routes
 app.use('/sets', require('./controllers/setsController'));
+app.use('/collections', require('./controllers/collectionController'));
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {

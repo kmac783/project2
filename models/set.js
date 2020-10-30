@@ -13,7 +13,8 @@ const setSchema = new mongoose.Schema({
     resaleCost: Number,
     setComplete: Boolean,
     instructionBooklet: Boolean,
-    owner: Boolean,
+    
+    
 
 }, { timestamps: true });
 

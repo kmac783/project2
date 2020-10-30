@@ -1,0 +1,7 @@
+<h1>My Legos</h1>
+
+<ul>
+  <% myLegos.sets.forEach(set => { %>
+  <li><a href="/collections/mylegos/<%= set.id %>"><%= set.name %></a></li>
+  <% }); %>
+</ul>
