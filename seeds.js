@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Collection = require('./models/collection');
 const Set = require('./models/set');
 
+//this is not duplicative of the code on server.js - this is an entirely separate file 
 const mongoURI = 'mongodb://localhost:27017/'+ 'Project2';
 mongoose.connect(
     mongoURI,

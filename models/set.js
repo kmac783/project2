@@ -8,7 +8,7 @@ const setSchema = new mongoose.Schema({
         required: true,        
     },
     theme: String,
-    description: String,
+    desc: String,
     originalCost: Number,
     resaleCost: Number,
     setComplete: Boolean,
