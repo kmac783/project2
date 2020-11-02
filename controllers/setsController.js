@@ -15,6 +15,8 @@ router.get('/new', (req, res)=> {
     res.render('sets/new.ejs');
 });
 
+
+
 // 2 Create New Set
 router.post('/', async (req,res) => {
     if(req.body.setComplete === "on") {
@@ -29,5 +31,7 @@ router.post('/', async (req,res) => {
     //res.send(newSet);
     res.redirect('/legos/mylegos');
 });
+
+
 
 module.exports = router;
