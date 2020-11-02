@@ -3,6 +3,7 @@
 //___________________
 const express = require('express');
 const methodOverride  = require('method-override');
+const expressLayouts = require('express-ejs-layouts');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
@@ -29,14 +30,18 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 db.on('open' , ()=>{});
 //___________________
 //Middleware
+app.set('view engine', 'ejs')
+
 //___________________
 //use public folder for static assets
 app.use(express.static('public'));
+
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(expressLayouts);
 //___________________
 // Routes
 app.use('/sets', require('./controllers/setsController'));
@@ -44,7 +49,9 @@ app.use('/legos', require('./controllers/legosController'));
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Find the Legos!');
+  //res.send('Find the Legos!');
+  res.render('home.ejs')
+
 });
 //___________________
 //Listener
