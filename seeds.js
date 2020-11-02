@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Collection = require('./models/collection');
+const Lego = require('./models/lego');
 const Set = require('./models/set');
 
 //this is not duplicative of the code on server.js - this is an entirely separate file 
@@ -27,18 +27,18 @@ mongoose.connect(
     const arandelle = await Set.create({
         name: "Arendelle",
     });
-    const myCollection = new Collection ({
+    const myLego = new Lego ({
         name: 'My Legos',
         sets: [],
     });
-    myCollection.sets.push(frozen);
-    myCollection.sets.push(beauty);
-    myCollection.sets.push(arandelle);
-    myCollection.save(function (error, savedMyCollection){
+    myLego.sets.push(frozen);
+    myLego.sets.push(beauty);
+    myLego.sets.push(arandelle);
+    myLego.save(function (error, savedmyLego){
         if (error) {
             console.log(error);
         } else {
-            console.log('myCollection list is', savedMyCollection);
+            console.log('myCollection list is', savedmyLego);
         }
     });
 })();

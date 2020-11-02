@@ -1,0 +1,18 @@
+
+<h4>My Lego Sets Detail or Show Page</h4>
+<p>
+  Name: <%= set.name %><br> 
+  Theme: <%= set.theme %><br> 
+  Description: <%= set.desc %><br>
+  Original Cost: $<%= set.originalCost %><br>
+  Resale Cost: $<%= set.resaleCost %><br>
+  
+  
+  <% if (set.setComplete) { %>
+  <span> I have all the pieces </span>
+  <% } else { %>
+  <span> I am missing pieces </span>
+  <% } %>
+</p>
+
+</form>

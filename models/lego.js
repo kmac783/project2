@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const collectionSchema = new mongoose.Schema({
+const legoSchema = new mongoose.Schema({
     name: {
         type: String,
         default:'',        
@@ -17,6 +17,6 @@ const collectionSchema = new mongoose.Schema({
     ]
 }, { timestamps: true });
 
-const Collection = mongoose.model('Collection', collectionSchema);
+const Lego = mongoose.model('Lego', legoSchema);
 
-module.exports = Collection;
+module.exports = Lego;

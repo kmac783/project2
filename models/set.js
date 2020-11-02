@@ -11,13 +11,17 @@ const setSchema = new mongoose.Schema({
     desc: String,
     originalCost: Number,
     resaleCost: Number,
-    setComplete: Boolean,
-    instructionBooklet: Boolean,
+    setComplete: {
+        type: Boolean,
+        default: true,
+    },
+    instructionBooklet: {
+        type: Boolean,
+        default: true,
+    },
     
     
 
 }, { timestamps: true });
 
-const Set = mongoose.model('Set', setSchema);
-
-module.exports = Set;
+module.exports = mongoose.model('Set', setSchema);

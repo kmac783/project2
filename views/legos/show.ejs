@@ -1,0 +1,13 @@
+<h4>My Legos</h4>
+<ul>
+  <% legos.sets.forEach(set => { %>
+  <li><%= set.name %> <% }) %></li>
+</ul>
+
+<h4>My Legos</h4>
+
+<ul>
+  <% myLegos.sets.forEach(set => { %>
+  <li><a href="/legos/mylegos/<%= set.id %>"><%= set.name %></a></li>
+  <% }); %>
+</ul>

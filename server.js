@@ -40,11 +40,11 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 // Routes
 app.use('/sets', require('./controllers/setsController'));
-app.use('/collections', require('./controllers/collectionController'));
+app.use('/legos', require('./controllers/legosController'));
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.send('Find the Legos!');
 });
 //___________________
 //Listener
