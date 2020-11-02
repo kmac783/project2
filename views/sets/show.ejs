@@ -1,18 +1,21 @@
 
-<h4><%= set.name %> Detail or Show Page</h4>
+<h4><%= set.name %></h4>
+<button type="button" name="button">
+  <a href="/legos/mylegos/<%=set.id%>/edit">Update Lego Set</a>
+</button>
+<br/>
 <p>
   Name: <%= set.name %><br> 
   Theme: <%= set.theme %><br> 
   Description: <%= set.desc %><br>
   Original Cost: $<%= set.originalCost %><br>
-  Resale Cost: $<%= set.resaleCost %><br>
+  Resale Price: $<%= set.resaleCost %><br>
   
-  
+  Is the set complete?:
   <% if (set.setComplete) { %>
-  <span> I have all the pieces </span>
+  <span> Yes </span>
   <% } else { %>
-  <span> I am missing pieces </span>
+  <span> No </span>
   <% } %>
 </p>
-
-</form>
+<button type="button" name="button"><a href="/legos/mylegos">Back to My Legos</a></button>

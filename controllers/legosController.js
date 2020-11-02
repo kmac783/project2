@@ -29,26 +29,47 @@ router.get('/mylegos/:id', async (req, res)=> {
     let myLego = await Lego.findOne({name: "My Legos"});
     //console.log(lego);
     let set = await Set.findById(req.params.id);
-    console.log(set);
+    //console.log(set);
     //res.send(req.params.set);
     res.render('sets/show', {myLego, set});
 
 });
+// // EDIT ROUTE
+// router.get('/:id/edit', (req, res)=>{
+//     Lego.findById(req.params.id, (error, foundMyLego)=>{
+//         res.render('sets/edit.ejs',{
+//             lego: foundMyLego,
 
-// router.post('/legoId/sets', async (req, res)=> {
-//     let foundSet = await Set.findByIdAndUpdate(
-//         req.params.mySetId,
-//         {
-//             $push: {
-//                 sets: req.body.sets,
-//             },
-//         },
-//         {new: true, upset: true}
-//     );
-//     console.log(foundSet);
-//     res.redirect(`/mylegos/${foundSet.id}`);
+//         });
+//     });
 // });
+// EDIT FORM page set up Route
+router.get('/mylegos/:setId/edit', async (req,res)=> {
+    //const legoId = req.params.legoId;
+    const setId = req.params.setId;
+    //console.log(legoId, setId);
+    let myLego = await Lego.findOne({name: "My Legos"})
+        console.log(myLego);    
+    //const foundSet = await myLego.sets.id(setId);
+    let foundSet = await Set.findById(setId);
+        //res.send({myLego, foundSet});
+        res.render('sets/edit.ejs',{set:foundSet});
+    });
 
-
+//5 Updating a set 
+router.post('/sets/', async (req, res)=> {
+    console.log(req.params.mySetId);
+    let foundSet = await Set.findByIdAndUpdate(
+        req.params.mySetId,        
+        {
+            $push: {
+                sets: req.body.sets,
+            },
+        },
+        {new: true, upset: true}
+    );
+    console.log(foundSet);
+    res.redirect(`/mylegos/${foundSet.id}`);
+});
 
 module.exports = router;
