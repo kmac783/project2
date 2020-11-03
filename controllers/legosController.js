@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const Lego = require('../models/lego');
 const Set = require('../models/set');
+const { route } = require('./setsController');
+
+
 
 // 3 Index of My Legos Sets (/legos/mylegos)
 router.get('/mylegos', async (req, res) => {
@@ -10,6 +13,7 @@ router.get('/mylegos', async (req, res) => {
     //res.send(legos);
     res.render('legos/index.ejs', { myLegos });
 });
+
 
 // 1 New Legos Form (will rarely be used identifies new collections to be created)
 router.get('/mylegos/new', (req, res) => {
@@ -55,6 +59,8 @@ router.post("/mylegos/:setId", async (req, res)=> {
     });
 });
 
+
+
 // 5 PUT ROUTE adding the edit changes to the set 
 router.put('/mylegos/:setId', async (req, res) => {
     //console.log("PUT ROUTE");
@@ -68,20 +74,6 @@ router.put('/mylegos/:setId', async (req, res) => {
     res.redirect(`/legos/mylegos/${foundSet._id}`);
     });
 
-// //5 Updating a set 
-// router.post('/sets/', async (req, res)=> {
-//     console.log(req.params.mySetId);
-//     let foundSet = await Set.findByIdAndUpdate(
-//         req.params.mySetId,        
-//         {
-//             $push: {
-//                 sets: req.body.sets,
-//             },
-//         },
-//         {new: true, upset: true}
-//     );
-//     console.log(foundSet);
-//     res.redirect(`/mylegos/${foundSet.id}`);
-// });
+
 
 module.exports = router;

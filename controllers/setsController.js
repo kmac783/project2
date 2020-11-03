@@ -32,6 +32,20 @@ router.post('/', async (req,res) => {
     res.redirect('/legos/mylegos');
 });
 
-
+// //5 Updating a set 
+// router.post('/sets/', async (req, res)=> {
+//     console.log(req.params.mySetId);
+//     let foundSet = await Set.findByIdAndUpdate(
+//         req.params.mySetId,        
+//         {
+//             $push: {
+//                 sets: req.body.sets,
+//             },
+//         },
+//         {new: true, upset: true}
+//     );
+//     console.log(foundSet);
+//     res.redirect(`/mylegos/${foundSet.id}`);
+// });
 
 module.exports = router;

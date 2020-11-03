@@ -5,6 +5,7 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require ('mongoose');
+const Lego = require('./models/lego');
 const app = express ();
 const db = mongoose.connection;
 //___________________
@@ -48,11 +49,16 @@ app.use('/sets', require('./controllers/setsController'));
 app.use('/legos', require('./controllers/legosController'));
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
-  //res.send('Find the Legos!');
-  res.render('home.ejs')
-
+// HOME INDEX
+app.get('/', async (req,res)=> {
+  // console.log('/');
+  // res.send("Find the Legos!");
+  let legos = await Lego.find();
+  // console.log(`found and populated all collections: ${legos}`);
+  // res.send(legos);
+  res.render('home.ejs', {legos});
 });
+
 //___________________
 //Listener
 //___________________

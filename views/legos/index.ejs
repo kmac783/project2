@@ -1,5 +1,8 @@
 <h4>My Legos</h4>
-
+<button type="button" name="button">
+<a href="/sets/new">Add Set</a>
+</button>
+<br/>
 <ul>
   <% myLegos.sets.forEach(set => { %>
   <li><a href="/legos/mylegos/<%= set.id %>"><%= set.name %></a></li>
