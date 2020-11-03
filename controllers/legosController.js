@@ -14,6 +14,15 @@ router.get('/mylegos', async (req, res) => {
     res.render('legos/index.ejs', { myLegos });
 });
 
+// Index of My Wishlist sets (/legos/mywishlist)
+router.get('/mywishlist', async (req, res) => {
+    //console.log('/mywishlist');
+    let myWishlist = await Lego.findOne({ name: "My Wishlist" }).populate('sets');
+    //console.log(`found and populated all collections: ${myWishlist}`);
+    //res.send(legos);
+    res.render('wishes/index.ejs', { myWishlist });
+});
+
 
 // 1 New Legos Form (will rarely be used identifies new collections to be created)
 router.get('/mylegos/new', (req, res) => {
