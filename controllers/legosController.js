@@ -34,16 +34,8 @@ router.get('/mylegos/:id', async (req, res) => {
     res.render('sets/show', { myLego, set });
 
 });
-// // EDIT ROUTE
-// router.get('/:id/edit', (req, res)=>{
-//     Lego.findById(req.params.id, (error, foundMyLego)=>{
-//         res.render('sets/edit.ejs',{
-//             lego: foundMyLego,
 
-//         });
-//     });
-// });
-// EDIT FORM page set up Route
+// 6 EDIT FORM page set up Route
 router.get('/mylegos/:setId/edit', async (req, res) => {
     const setId = req.params.setId;
     //console.log(setId);
@@ -53,6 +45,28 @@ router.get('/mylegos/:setId/edit', async (req, res) => {
     //res.send({myLego, foundSet});
     res.render('sets/edit.ejs', { set: foundSet });
 });
+
+
+
+// 7 DELETE ROUTE - removing a set from my legos collection
+router.post("/mylegos/:setId", async (req, res)=> {
+    await Set.findByIdAndDelete(req.params.setId, (error)=>{
+        res.redirect("/legos/mylegos/");
+    });
+});
+
+// 5 PUT ROUTE adding the edit changes to the set 
+router.put('/mylegos/:setId', async (req, res) => {
+    //console.log("PUT ROUTE");
+    let setId = req.params.setId;
+    //console.log({setId});
+    let foundSet = await Set.findByIdAndUpdate(setId, req.body, (err)=>{
+        if (err) res.send(err);
+        
+    })
+    //res.send(foundSet);
+    res.redirect(`/legos/mylegos/${foundSet._id}`);
+    });
 
 // //5 Updating a set 
 // router.post('/sets/', async (req, res)=> {
@@ -69,22 +83,5 @@ router.get('/mylegos/:setId/edit', async (req, res) => {
 //     console.log(foundSet);
 //     res.redirect(`/mylegos/${foundSet.id}`);
 // });
-
-//PUT ROUTE adding the edit changes to the set 
-//PUT ROUTE adding the actor to the movie
-//ADDING THE SONG TO THE ALBUM PAGE via the PUT ROUTE
-router.put('/mylegos/:setId', async (req, res) => {
-    //console.log("PUT ROUTE");
-    let setId = req.params.setId;
-    //console.log({setId});
-    let foundSet = await Set.findByIdAndUpdate(setId, req.body, (err)=>{
-        if (err) res.send(err);
-        
-    })
-    //res.send(foundSet);
-    res.redirect(`/legos/mylegos/${foundSet._id}`);
-    });
-
-
 
 module.exports = router;
