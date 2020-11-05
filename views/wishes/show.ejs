@@ -1,8 +1,4 @@
 <h4>My Wishlist</h4>
-<button type="button" name="button">
-<a href="/wishes/new">Add New Set</a>
-</button>
-<br/>
 <ul>
   <% myWishlist.sets.forEach(set => { %>
   <li><a href="/legos/mywishlist/<%= set.id %>"><%= set.name %></a></li>

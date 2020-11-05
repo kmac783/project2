@@ -4,6 +4,7 @@
   <a href="/legos/mylegos/<%=set.id%>/edit">Update Lego Set</a>
 </button>
 <br/>
+<div class="set-content">
 <p>
   Name: <%= set.name %><br> 
   Theme: <%= set.theme %><br> 
@@ -17,7 +18,8 @@
   <% } else { %>
   <span> No </span>
   <% } %>
-</p>
+</p></div>
+<div class="set-image"><img src="<%= set.image %>" class="img-responsive"></div>
 <form action="/legos/mylegos/<%=set.id%>?method=DELETE" method="POST">
   <input type="submit" value="DELETE SET" />
   </form>

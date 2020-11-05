@@ -1,2 +1,12 @@
 <h1>Legos Set List</h1>
+  
 
+<button type="button" name="button">
+  <a href="/sets/new">Add Set</a>
+  </button>
+  <br/>
+  <ul>
+    <% sets.forEach(set => { %>
+    <li><a href="/<%= set.id %>"><%= set.name %></a></li>
+    <% }); %>
+  </ul>

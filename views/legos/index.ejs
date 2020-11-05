@@ -1,10 +1,17 @@
-<h4>My Legos</h4>
+<div class="content">
+<div class="title"><h4>My Legos</h4>
 <button type="button" name="button">
 <a href="/sets/new">Add Set</a>
-</button>
+</button></div>
 <br/>
-<ul>
+
   <% myLegos.sets.forEach(set => { %>
-  <li><a href="/legos/mylegos/<%= set.id %>"><%= set.name %></a></li>
+    <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+      <a href="/legos/mylegos/<%= set.id %>" class="img-card"><img src="<%= set.image %>" ><%= set.name %></a>
+    </div></div></div></div>
   <% }); %>
-</ul>
+
+</div>

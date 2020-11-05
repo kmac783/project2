@@ -17,7 +17,11 @@ mongoose.connect(
         console.log('the connection with mongod is established');
     }
 );
+
 (async function () {
+    // await mongoose.connection.dropCollection('sets');
+    // await mongoose.connection.dropCollection('legos');
+
     const frozen = await Set.create({
         name: "Elsa's Castle",
     });

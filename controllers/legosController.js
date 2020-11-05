@@ -14,7 +14,7 @@ router.get('/mylegos', async (req, res) => {
     res.render('legos/index.ejs', { myLegos });
 });
 
-// Index of My Wishlist sets (/legos/mywishlist)
+// 3a Index of My Wishlist sets (/legos/mywishlist)
 router.get('/mywishlist', async (req, res) => {
     //console.log('/mywishlist');
     let myWishlist = await Lego.findOne({ name: "My Wishlist" }).populate('sets');
@@ -24,29 +24,37 @@ router.get('/mywishlist', async (req, res) => {
 });
 
 
-// 1 New Legos Form (will rarely be used identifies new collections to be created)
+
+
+// 1 New Legos Collection - Form (will rarely be used to create new collections)
 router.get('/mylegos/new', (req, res) => {
     res.render('legos/new.ejs');
 
 });
 
-// 2 Create new Legos (see above will rarely be used as it creates a new collection of legos)
+// 2 Create new Legos Collection (see above will rarely be used as it creates a new collection of legos)
 router.post('/', async (req, res) => {
     let myLegos = await Lego.create(req.body);
     //console.log(myLegos);
     res.redirect('/legos/${myLegos:id}');
 });
 
-// 4 SHOW a Set
+
+// 4 SHOW a Set for My Legos
 router.get('/mylegos/:id', async (req, res) => {
     let myLego = await Lego.findOne({ name: "My Legos" });
     //console.log(lego);
-    let set = await Set.findById(req.params.id);
-    //console.log(set);
+    let set = await Set.findById(req.params.id).populate({
+        path: 'sets',
+        
+    });
+    console.log(set);
     //res.send(req.params.set);
     res.render('sets/show', { myLego, set });
 
 });
+
+
 
 // 6 EDIT FORM page set up Route
 router.get('/mylegos/:setId/edit', async (req, res) => {
