@@ -44,15 +44,12 @@ router.post('/', async (req, res) => {
 router.get('/mylegos/:id', async (req, res) => {
     let myLego = await Lego.findOne({ name: "My Legos" });
     //console.log(lego);
-    let set = await Set.findById(req.params.id).populate({
-        path: 'sets',
+    let set = await Set.findById(req.params.id)
         
-    });
-    console.log(set);
     //res.send(req.params.set);
     res.render('sets/show', { myLego, set });
-
 });
+
 
 
 
@@ -62,7 +59,10 @@ router.get('/mylegos/:setId/edit', async (req, res) => {
     //console.log(setId);
     let myLego = await Lego.findOne({ name: "My Legos" })
     //console.log(myLego);
-    let foundSet = await Set.findById(setId);
+    let foundSet = await Set.findById(setId).populate({
+        path: 'sets',
+    });
+    console.log(foundSet);
     //res.send({myLego, foundSet});
     res.render('sets/edit.ejs', { set: foundSet });
 });
@@ -83,6 +83,7 @@ router.put('/mylegos/:setId', async (req, res) => {
     //console.log("PUT ROUTE");
     let setId = req.params.setId;
     //console.log({setId});
+    console.log(req.body);
     let foundSet = await Set.findByIdAndUpdate(setId, req.body, (err)=>{
         if (err) res.send(err);
         

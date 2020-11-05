@@ -2,17 +2,17 @@
 <h4><%= set.name %></h4>
 <form action="/legos/mylegos/<%=set.id%>?_method=PUT" method="POST">
 <label for="name">Name:</label>
-<input type="text" name="name" value="<%set.name%>" />
+<input type="text" name="name" value="<%=set.name%>" />
 <label for="theme">Theme:</label>
-<input type="text" name="theme" value="<%set.theme%>" />
+<input type="text" name="theme" value="<%=set.theme%>" />
 <label for="desc">Description:</label>
-<input type="text" name="desc" value="<%set.desc%>" />
+<input type="text" name="desc" value="<%=set.desc%>" />
 <label for="originalCost">Original Price</label>
-<input type="number" name="originalCost" value="<%set.originalCost%>" />
+<input type="number" name="originalCost" value="<%=set.originalCost%>" />
 <label for="resaleCost">Recommended Resale Cost:</label>
-<input type="number" name="resaleCost" value="<%set.resaleCost%>" />
+<input type="number" name="resaleCost" value="<%=set.resaleCost%>" />
 <label for="image">Add Image URL:</label>
-<input type="text" name="image" value="<%set.image%>" />
+<input type="text" name="image" value="<%=set.image%>" />
 
 <input type="submit" value="Submit">
 </form>
