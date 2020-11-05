@@ -4,9 +4,9 @@ const Lego = require('./models/lego');
 const Set = require('./models/set');
 
 //this is not duplicative of the code on server.js - this is an entirely separate file 
-const mongoURI = 'mongodb://localhost:27017/'+ 'Project2';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'Project2';
 mongoose.connect(
-    mongoURI,
+    MONGODB_URI,
     {
     useNewUrlParser: true,
     useUnifiedTopology: true,
